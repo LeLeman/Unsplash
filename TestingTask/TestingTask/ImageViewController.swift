@@ -16,9 +16,10 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
         imageView.contentMode = .scaleAspectFit
+        }
     }
-        
-}
+    //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
@@ -27,28 +28,28 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = .black
     }
     
-// MARK: - Button and UIScrollView
+    // MARK: - viewWillAppear
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        imageLoad()
+    }
     
+// MARK: - Action
    
     @IBAction func closeVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+//MARK: - UIScrollView
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    //MARK: - Loading Image
+//MARK: - APIImageLoading
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        imageLoad()
-    }
-    
-    func imageLoad() {
+    public func imageLoad() {
         guard let url = URL(string: selectedImage) else {return}
         URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else {return}

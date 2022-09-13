@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ImageCollectionViewCell"
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -17,8 +16,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
-    
     
     override init (frame: CGRect) {
         super.init(frame: frame)
