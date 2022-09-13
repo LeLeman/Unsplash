@@ -27,28 +27,27 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = .black
     }
     
-// MARK: - Button and UIScrollView
-    
-    
-   
-    @IBAction func closeVC(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    //MARK: - Loading Image
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         imageLoad()
     }
     
-    func imageLoad() {
+// MARK: - Action
+   
+    @IBAction func closeVC(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//MARK: - UIScrollView
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+//MARK: - APIImageLoading
+    
+    public func imageLoad() {
         guard let url = URL(string: selectedImage) else {return}
         URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else {return}
