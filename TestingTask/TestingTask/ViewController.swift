@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var searchBar: UISearchBar!
     var result: [Result] = []
     var totalPages: Int = .init()
-    
+    var gotOldResponse: Bool = .init()
     
 // MARK: - ViewDidLoad
     
@@ -44,12 +44,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func fetchPhoto(quary: String, page: String) {
         let api = APIManager()
-        totalPages = api.totalPages
-        api.fenchPhotos(query: quary, page: page) { [weak self] result  in
+        self.gotOldResponse = false
+        
+        api.fenchPhotos(query: quary, page: page) { [weak self] (results, totalPages) in
         DispatchQueue.main.async {
-            self?.result += result
+            self?.result += results
+            self?.totalPages = totalPages
             self?.imageCollectionView.reloadData()
             }
+            self?.gotOldResponse = true
         }
     }
     
@@ -59,10 +62,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let position = scrollView.contentOffset.y
         let contentSizeHeight = imageCollectionView.contentSize.height
         let scrollViewFrameHeight = scrollView.frame.height
-        if position > (contentSizeHeight-scrollViewFrameHeight) {
+        if position > (contentSizeHeight-scrollViewFrameHeight) && gotOldResponse  {
             page1 = page1 + 1
-            if page1 != totalPages {
-                fetchPhoto(quary: text1, page: String(page1))
+            if page1 <= totalPages {
+            fetchPhoto(quary: text1, page: String(page1))
             } else {return}
         }
     }

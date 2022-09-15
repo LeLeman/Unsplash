@@ -9,8 +9,14 @@ import Foundation
 
 struct APIResponse: Codable {
     let total: Int
-    let total_pages: Int
+    let totalPages: Int
     let results: [Result]
+    
+    enum CodingKeys: String, CodingKey {
+        case total
+        case totalPages = "total_pages"
+        case results
+    }
 }
 
 struct Result: Codable {
