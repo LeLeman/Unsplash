@@ -18,6 +18,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = .scaleAspectFit
         }
     }
+    
     //MARK: - viewDidLoad
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 10.0
+        scrollView.scrollsToTop = false
         view.backgroundColor = .black
     }
     
