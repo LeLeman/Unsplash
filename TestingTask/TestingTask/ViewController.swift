@@ -60,6 +60,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
+        scrollView.scrollsToTop = false
         let contentSizeHeight = imageCollectionView.contentSize.height
         let scrollViewFrameHeight = scrollView.frame.height
         if position > (contentSizeHeight-scrollViewFrameHeight) && gotOldResponse  {
