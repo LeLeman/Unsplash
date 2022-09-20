@@ -12,13 +12,13 @@ import UIKit
 class ImageViewController: UIViewController, UIScrollViewDelegate {
 
     var selectedImage: String = .init()
+   
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
         imageView.contentMode = .scaleAspectFit
         }
     }
-    
     //MARK: - viewDidLoad
     
     override func viewDidLoad() {
@@ -26,7 +26,6 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 10.0
-        scrollView.scrollsToTop = false
         view.backgroundColor = .black
     }
     
@@ -38,7 +37,10 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
 // MARK: - Action
-   
+    
+    @IBAction func saveImage(_ sender: Any) {
+    
+    }
     @IBAction func closeVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

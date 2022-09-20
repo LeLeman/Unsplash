@@ -10,7 +10,7 @@ import Foundation
 
 
 class APIManager {
-    
+static let apiManager = APIManager()
 
     func fenchPhotos(query: String, page: String, completion: @escaping ([Result], Int) -> Void) {
     
@@ -25,8 +25,6 @@ class APIManager {
             } catch {
                 print (error)
             }
-          
-
         }.resume()
     }
 

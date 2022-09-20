@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UIScrollViewDelegate, UICollectionViewDelegateFlowLayout  {
     
+    
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     var result: [Result] = []
     var totalPages: Int = .init()
     var gotOldResponse: Bool = .init()
+    
     
 // MARK: - ViewDidLoad
     
@@ -43,10 +45,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 // MARK: - API
     
     func fetchPhoto(quary: String, page: String) {
-        let api = APIManager()
+       
         self.gotOldResponse = false
         
-        api.fenchPhotos(query: quary, page: page) { [weak self] (results, totalPages) in
+        APIManager.apiManager.fenchPhotos(query: quary, page: page) { [weak self] (results, totalPages) in
         DispatchQueue.main.async {
             self?.result += results
             self?.totalPages = totalPages
@@ -56,7 +58,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // MARK: - scrollViewDidScroll
+// MARK: - scrollViewDidScroll
        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
@@ -79,10 +81,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let imageURLString = result[indexPath.row].urls.regular
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ImageViewController.self), for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ImageViewController.self),
+        for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell()}
         cell.configure(with: imageURLString)
         return cell
     }
+    
 
 // MARK: - UICollectionViewDelegate
       
@@ -92,8 +96,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         imageViewController.selectedImage = result[indexPath.row].urls.regular
         imageViewController.modalTransitionStyle = .coverVertical
         imageViewController.modalPresentationStyle = .overCurrentContext
-
-        present(imageViewController, animated: true)
+        
+        present (imageViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
