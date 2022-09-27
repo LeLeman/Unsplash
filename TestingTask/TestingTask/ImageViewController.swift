@@ -36,14 +36,26 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         imageLoad()
     }
     
-// MARK: - Action
+ 
+// MARK: - Action Close ImageViewController
     
-    @IBAction func saveImage(_ sender: Any) {
     
-    }
     @IBAction func closeVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+
+// MARK: - Action Save Image in PhotoLibary
+   
+    @IBAction func saveImageToPhotoLibary(_ sender: UIButton) {
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
+        
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! PopUpViewController
+        self.addChild(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParent: self)
+    }
+    
     
 //MARK: - UIScrollView
     
