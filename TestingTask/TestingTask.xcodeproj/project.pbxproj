@@ -16,6 +16,7 @@
 		341AC84F28BD02D50005C061 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341AC84E28BD02D50005C061 /* APIManager.swift */; };
 		341AC85328BD1C490005C061 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341AC85228BD1C490005C061 /* ImageViewController.swift */; };
 		34675FA428D9C43E00EC0314 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34675FA328D9C43E00EC0314 /* DownloadManager.swift */; };
+		34B58EE928E1BC9E0047A90C /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B58EE828E1BC9E0047A90C /* PopUpViewController.swift */; };
 		34F8224C28C3D8080030AC6A /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8224B28C3D8080030AC6A /* ImageCollectionViewCell.swift */; };
 		34F8224E28C934A60030AC6A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8224D28C934A60030AC6A /* Models.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		341AC84E28BD02D50005C061 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		341AC85228BD1C490005C061 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		34675FA328D9C43E00EC0314 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		34B58EE828E1BC9E0047A90C /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		34F8224B28C3D8080030AC6A /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		34F8224D28C934A60030AC6A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				341AC84328BC9BF60005C061 /* LaunchScreen.storyboard */,
 				341AC84628BC9BF60005C061 /* Info.plist */,
 				341AC85228BD1C490005C061 /* ImageViewController.swift */,
+				34B58EE828E1BC9E0047A90C /* PopUpViewController.swift */,
 			);
 			path = TestingTask;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				34675FA428D9C43E00EC0314 /* DownloadManager.swift in Sources */,
 				341AC85328BD1C490005C061 /* ImageViewController.swift in Sources */,
 				341AC83B28BC9BF50005C061 /* SceneDelegate.swift in Sources */,
+				34B58EE928E1BC9E0047A90C /* PopUpViewController.swift in Sources */,
 				34F8224E28C934A60030AC6A /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +314,7 @@
 				DEVELOPMENT_TEAM = 5J526AW5AV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestingTask/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save the filtered photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -338,6 +343,7 @@
 				DEVELOPMENT_TEAM = 5J526AW5AV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestingTask/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save the filtered photo.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
